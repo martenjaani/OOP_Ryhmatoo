@@ -101,4 +101,30 @@ public class SeisuKontroll {
     public List<Kaart> getKõikKaardid() {
         return kõikKaardid;
     }
+
+    public int tugevaimSeis() {
+        for (int i = 0; i < seisud.size(); i++) {
+            if (seisud.get(i).size() != 0)
+                return i;
+        }
+        return 0;
+    }
+
+    public List<Kaart> tugevaimadViis() {
+        int suurimSumma = 0;
+        int suurimIndeks = 0;
+        if (tugevaimSeis() != 2) {
+            for (int i = 0; i < seisud.get(tugevaimSeis()).size(); i++) {
+                int ajutineSumma = 0;
+                for (int j = 0; j < seisud.get(tugevaimSeis()).get(i).size(); j++) {
+                    ajutineSumma += seisud.get(tugevaimSeis()).get(i).get(j).getTugevusArv();
+                }
+                if (ajutineSumma > suurimSumma) {
+                    suurimSumma = ajutineSumma;
+                    suurimIndeks = i;
+                }
+            }
+        }
+        return seisud.get(tugevaimSeis()).get(suurimIndeks);
+    }
 }
