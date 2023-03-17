@@ -11,13 +11,13 @@ public class Mäng {
         System.out.println("parem");
         System.out.println(parem.väljastaSeis());
 
-        if (parem.tugevaimSeis() < vasak.tugevaimSeis()) {
+        if (parem.tugevaimSeis() < vasak.tugevaimSeis() && parem.tugevaimSeis() != -1) {
             System.out.println("parem");
             for (Kaart kaart : parem.tugevaimadViis()) {
                 System.out.print(kaart + " ");
             }
         }
-        else if (parem.tugevaimSeis() > vasak.tugevaimSeis()){
+        else if (parem.tugevaimSeis() > vasak.tugevaimSeis() && vasak.tugevaimSeis() != -1){
             System.out.println("vasak");
             for (Kaart kaart1 : vasak.tugevaimadViis()) {
                 System.out.print(kaart1 + " ");
