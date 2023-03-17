@@ -87,6 +87,19 @@ public class SeisuKontroll {
 
     }
 
+    public void rida(List<Kaart> viisKaarti) {
+        int mituKorda = 0;
+        for (int i = 0; i < viisKaarti.size()-1; i++) {
+            if (viisKaarti.get(i).getTugevusArv() + 1 == viisKaarti.get(i + 1).getTugevusArv())
+                mituKorda += 1;
+            else break;
+        }
+        if (viisKaarti.get(viisKaarti.size()-2).getTugevusArv() + 1 == viisKaarti.get(viisKaarti.size()-1).getTugevusArv())
+            mituKorda += 1;
+        if (mituKorda == 5)
+            seisud.get(4).add(viisKaarti);
+    }
+
     public List<List<List<Kaart>>> getSeisud() {
         return seisud;
     }
