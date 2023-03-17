@@ -27,7 +27,52 @@ public class SeisuKontroll {
         for (int i = 0; i < 9; i++) {
             seisud.add(i,new ArrayList<>());
         }
+        kõikVõimalused();
+    }
 
+    public void kõikVõimalused() {
+        int[][] võimalused = {
+                {0,1,2,3,4},
+                {0,1,2,3,5},
+                {0,1,2,3,6},
+                {0,1,2,4,5},
+                {0,1,2,4,6},
+                {0,1,2,5,6},
+                {0,1,3,4,5},
+                {0,1,3,4,6},
+                {0,1,3,5,6},
+                {0,1,4,5,6},
+                {0,2,3,4,5},
+                {0,2,3,4,6},
+                {0,2,3,5,6},
+                {0,2,4,5,6},
+                {0,3,4,5,6},
+                {1,2,3,4,5},
+                {1,2,3,4,6},
+                {1,2,3,5,6},
+                {1,2,4,5,6},
+                {1,3,4,5,6},
+                {2,3,4,5,6}
+        };
+
+        for (int[] ints : võimalused) {
+            List<Kaart> kontrollitavadKaardid = new ArrayList<>();
+            kontrollitavadKaardid.add(kõikKaardid.get(ints[0]));
+            kontrollitavadKaardid.add(kõikKaardid.get(ints[1]));
+            kontrollitavadKaardid.add(kõikKaardid.get(ints[2]));
+            kontrollitavadKaardid.add(kõikKaardid.get(ints[3]));
+            kontrollitavadKaardid.add(kõikKaardid.get(ints[4]));
+
+            //kõrge
+            paar(kontrollitavadKaardid);
+            //2 paari
+            kolmik(kontrollitavadKaardid);
+            rida(kontrollitavadKaardid);
+            //mastid
+            //maja(kontrollitavadKaardid);
+            nelik(kontrollitavadKaardid);
+            //straight flush
+        }
     }
 
     public void nelik(List<Kaart> viisKaarti){
@@ -94,6 +139,19 @@ public class SeisuKontroll {
         }
     }
 
+    public void rida(List<Kaart> viisKaarti) {
+        int mituKorda = 0;
+
+        for (int i = 0; i < viisKaarti.size() - 1; i++) {
+            if (viisKaarti.get(i).getTugevusArv() + 1 == viisKaarti.get(i+1).getTugevusArv())
+                mituKorda++;
+        }
+        if (viisKaarti.get(viisKaarti.size() - 2).getTugevusArv() + 1 == viisKaarti.get(viisKaarti.size() - 1).getTugevusArv())
+            mituKorda++;
+
+        if (mituKorda == 5)
+            seisud.get(4).add(viisKaarti);
+    }
 
     public List<List<List<Kaart>>> getSeisud() {
         return seisud;
@@ -107,10 +165,30 @@ public class SeisuKontroll {
             if (seisud.get(i).size() != 0)
                 return i;
         }
-        return 0;
+        return -1;
+    }
+
+    public String väljastaSeis() {
+        String väljasta = "";
+        for (int i = 0; i < seisud.size(); i++) {
+            String rida = "";
+            rida += i + " - ";
+            for (int j = 0; j < seisud.get(i).size(); j++) {
+                rida += "{";
+                for (int k = 0; k < seisud.get(i).get(j).size(); k++) {
+                    rida += seisud.get(i).get(j).get(k) + ", ";
+                }
+                rida += "} ";
+            }
+            rida += "\n";
+            väljasta += rida;
+        }
+        return väljasta;
     }
 
     public List<Kaart> tugevaimadViis() {
+        if (tugevaimSeis() == -1)
+            return null;
         int suurimSumma = 0;
         int suurimIndeks = 0;
         if (tugevaimSeis() != 2) {
