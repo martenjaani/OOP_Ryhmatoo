@@ -38,8 +38,8 @@ public class SeisuKontroll {
                     mituKordaEsineb++;
                 }
                 if(mituKordaEsineb==4){
-                    mituKordaEsineb=0;
                     seisud.get(1).add(viisKaarti.subList(i,i+4));
+                    return;
 
 
                 }
@@ -58,9 +58,8 @@ public class SeisuKontroll {
                     mituKordaEsineb++;
                 }
                 if(mituKordaEsineb==3){
-                    seisud.add(5,seisud.get(5));
-                    mituKordaEsineb=0;
-
+                    seisud.get(5).add(viisKaarti.subList(i,i+3));
+                    return;
                 }
 
             }
@@ -70,15 +69,17 @@ public class SeisuKontroll {
 
 
     public void paar(List<Kaart> viisKaarti){
+        int paare=0;
         for (int i = 0; i < 4; i++) {
             int mituKordaEsineb=1;
             for (int j = i+1; j < viisKaarti.size(); j++) {
                 if(viisKaarti.get(i).getTugevusArv() == viisKaarti.get(j).getTugevusArv()){
                     mituKordaEsineb++;
                 }
-                if(mituKordaEsineb==2){
+                if(mituKordaEsineb==2 && paare!=2) {
                     seisud.get(7).add(viisKaarti.subList(i,i+2));
                     mituKordaEsineb=0;
+                    paare++;
 
                 }
 
@@ -89,8 +90,10 @@ public class SeisuKontroll {
 
     public void maja(){
         if(!seisud.get(7).isEmpty() && !seisud.get(5).isEmpty() && !new HashSet<>(seisud.get(5)).containsAll(seisud.get(7))){
+            seisud.get(2).add(new ArrayList<>());
             seisud.get(2).add(seisud.get(7).get(0));
-            seisud.get(2).add(seisud.get(5).get(0));
+            List<Kaart> paar=seisud.get(5).get(0);
+            seisud.get(2).get(0).addAll(paar);
         }
     }
 
