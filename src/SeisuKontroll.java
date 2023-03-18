@@ -14,7 +14,7 @@ import java.util.*;
 public class SeisuKontroll {
     private List<Kaart> käsi;
     private List<Kaart> ühiskaardid;
-    private List<Kaart> kõikKaardid=new ArrayList<>();
+    private List<Kaart> kõikKaardid = new ArrayList<>();
     private List<List<List<Kaart>>> seisud;
 
     public SeisuKontroll(List<Kaart> käsi, List<Kaart> ühiskaardid) {
@@ -24,36 +24,36 @@ public class SeisuKontroll {
         kõikKaardid.addAll(käsi);
         kõikKaardid.addAll(ühiskaardid);
         Collections.sort(kõikKaardid);
-        seisud=new ArrayList<>();
+        seisud = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
-            seisud.add(i,new ArrayList<>());
+            seisud.add(i, new ArrayList<>());
         }
         kõikVõimalused();
     }
 
     public void kõikVõimalused() {
         int[][] võimalused = {
-                {0,1,2,3,4},
-                {0,1,2,3,5},
-                {0,1,2,3,6},
-                {0,1,2,4,5},
-                {0,1,2,4,6},
-                {0,1,2,5,6},
-                {0,1,3,4,5},
-                {0,1,3,4,6},
-                {0,1,3,5,6},
-                {0,1,4,5,6},
-                {0,2,3,4,5},
-                {0,2,3,4,6},
-                {0,2,3,5,6},
-                {0,2,4,5,6},
-                {0,3,4,5,6},
-                {1,2,3,4,5},
-                {1,2,3,4,6},
-                {1,2,3,5,6},
-                {1,2,4,5,6},
-                {1,3,4,5,6},
-                {2,3,4,5,6}
+                {0, 1, 2, 3, 4},
+                {0, 1, 2, 3, 5},
+                {0, 1, 2, 3, 6},
+                {0, 1, 2, 4, 5},
+                {0, 1, 2, 4, 6},
+                {0, 1, 2, 5, 6},
+                {0, 1, 3, 4, 5},
+                {0, 1, 3, 4, 6},
+                {0, 1, 3, 5, 6},
+                {0, 1, 4, 5, 6},
+                {0, 2, 3, 4, 5},
+                {0, 2, 3, 4, 6},
+                {0, 2, 3, 5, 6},
+                {0, 2, 4, 5, 6},
+                {0, 3, 4, 5, 6},
+                {1, 2, 3, 4, 5},
+                {1, 2, 3, 4, 6},
+                {1, 2, 3, 5, 6},
+                {1, 2, 4, 5, 6},
+                {1, 3, 4, 5, 6},
+                {2, 3, 4, 5, 6}
         };
 
         for (int[] ints : võimalused) {
@@ -77,15 +77,15 @@ public class SeisuKontroll {
     }
 
 
-    public void nelik(List<Kaart> viisKaarti){
+    public void nelik(List<Kaart> viisKaarti) {
         for (int i = 0; i < 2; i++) {
-            int mituKordaEsineb=1;
-            for (int j = i+1; j < viisKaarti.size(); j++) {
-                if(viisKaarti.get(i).getTugevusArv() == viisKaarti.get(j).getTugevusArv()){
+            int mituKordaEsineb = 1;
+            for (int j = i + 1; j < viisKaarti.size(); j++) {
+                if (viisKaarti.get(i).getTugevusArv() == viisKaarti.get(j).getTugevusArv()) {
                     mituKordaEsineb++;
                 }
-                if(mituKordaEsineb==4 && !tugevused(seisud.get(1)).contains(viisKaarti.get(i).getTugevusArv())){
-                    seisud.get(1).add(viisKaarti.subList(i,i+4));
+                if (mituKordaEsineb == 4 && !tugevused(seisud.get(1)).contains(viisKaarti.get(i).getTugevusArv())) {
+                    seisud.get(1).add(viisKaarti.subList(i, i + 4));
                     return;
 
 
@@ -96,16 +96,16 @@ public class SeisuKontroll {
 
     }
 
-    public void kolmik(List<Kaart> viisKaarti){
+    public void kolmik(List<Kaart> viisKaarti) {
         for (int i = 0; i < 3; i++) {
             //mitu korda esineb
-            int mituKordaEsineb=1;
-            for (int j = i+1; j < viisKaarti.size(); j++) {
-                if(viisKaarti.get(i).getTugevusArv() == viisKaarti.get(j).getTugevusArv()){
+            int mituKordaEsineb = 1;
+            for (int j = i + 1; j < viisKaarti.size(); j++) {
+                if (viisKaarti.get(i).getTugevusArv() == viisKaarti.get(j).getTugevusArv()) {
                     mituKordaEsineb++;
                 }
-                if(mituKordaEsineb==3 && !tugevused(seisud.get(5)).contains(viisKaarti.get(i).getTugevusArv())){
-                    seisud.get(5).add(viisKaarti.subList(i,i+3));
+                if (mituKordaEsineb == 3 && !tugevused(seisud.get(5)).contains(viisKaarti.get(i).getTugevusArv())) {
+                    seisud.get(5).add(viisKaarti.subList(i, i + 3));
                     return;
                 }
 
@@ -114,37 +114,37 @@ public class SeisuKontroll {
 
     }
 
-    public static List<Kaart> tagastaKolmik(List<Kaart> viisKaarti){
+    public static List<Kaart> tagastaKolmik(List<Kaart> viisKaarti) {
         for (int i = 0; i < 3; i++) {
             //mitu korda esineb
-            int mituKordaEsineb=1;
-            for (int j = i+1; j < viisKaarti.size(); j++) {
-                if(viisKaarti.get(i).getTugevusArv() == viisKaarti.get(j).getTugevusArv()){
+            int mituKordaEsineb = 1;
+            for (int j = i + 1; j < viisKaarti.size(); j++) {
+                if (viisKaarti.get(i).getTugevusArv() == viisKaarti.get(j).getTugevusArv()) {
                     mituKordaEsineb++;
                 }
-                if(mituKordaEsineb==3){
-                    return viisKaarti.subList(i,i+3);
+                if (mituKordaEsineb == 3) {
+                    return viisKaarti.subList(i, i + 3);
                 }
 
             }
-            
+
         }
         return Collections.emptyList();
 
     }
 
 
-    public void paar(List<Kaart> viisKaarti){
-        int paare=0;
+    public void paar(List<Kaart> viisKaarti) {
+        int paare = 0;
         for (int i = 0; i < 4; i++) {
-            int mituKordaEsineb=1;
-            for (int j = i+1; j < viisKaarti.size(); j++) {
-                if(viisKaarti.get(i).getTugevusArv() == viisKaarti.get(j).getTugevusArv()){
+            int mituKordaEsineb = 1;
+            for (int j = i + 1; j < viisKaarti.size(); j++) {
+                if (viisKaarti.get(i).getTugevusArv() == viisKaarti.get(j).getTugevusArv()) {
                     mituKordaEsineb++;
                 }
-                if(mituKordaEsineb==2 && paare!=2 && !tugevused(seisud.get(7)).contains(viisKaarti.get(i).getTugevusArv())) {
-                    seisud.get(7).add(viisKaarti.subList(i,i+2));
-                    mituKordaEsineb=0;
+                if (mituKordaEsineb == 2 && paare != 2 && !tugevused(seisud.get(7)).contains(viisKaarti.get(i).getTugevusArv())) {
+                    seisud.get(7).add(viisKaarti.subList(i, i + 2));
+                    mituKordaEsineb = 0;
                     paare++;
 
                 }
@@ -154,28 +154,26 @@ public class SeisuKontroll {
 
     }
 
-    public void kaksPaari(){
-        List<List<Kaart>> paarid=seisud.get(7);
-        List<Kaart> kaardid=new ArrayList<>();
-        if(paarid.size()>1){
-            for (int i = paarid.size()-1; i >= 0; i--) {
+    public void kaksPaari() {
+        List<List<Kaart>> paarid = seisud.get(7);
+        List<Kaart> kaardid = new ArrayList<>();
+        if (paarid.size() > 1) {
+            for (int i = paarid.size() - 1; i >= 0; i--) {
                 kaardid.addAll(paarid.get(i));
 
             }
             Collections.sort(kaardid);
-            seisud.get(6).add(kaardid.subList(0,4));
+            seisud.get(6).add(kaardid.subList(0, 4));
 
 
         }
 
 
-
-
     }
-    
 
-    public static List<Integer> tugevused(List<List<Kaart>> needSeisud){
-        List<Integer> tugevustList=new ArrayList<>();
+
+    public static List<Integer> tugevused(List<List<Kaart>> needSeisud) {
+        List<Integer> tugevustList = new ArrayList<>();
         for (int i = 0; i < needSeisud.size(); i++) {
             for (int j = 0; j < needSeisud.get(i).size(); j++) {
                 tugevustList.add(needSeisud.get(i).get(j).getTugevusArv());
@@ -185,31 +183,32 @@ public class SeisuKontroll {
         }
         return tugevustList;
     }
-    public static List<Integer> tugevusedListist(List<Kaart> needSeisud){
-        List<Integer> tugevustList=new ArrayList<>();
+
+    public static List<Integer> tugevusedListist(List<Kaart> needSeisud) {
+        List<Integer> tugevustList = new ArrayList<>();
         for (int i = 0; i < needSeisud.size(); i++) {
-                tugevustList.add(needSeisud.get(i).getTugevusArv());
+            tugevustList.add(needSeisud.get(i).getTugevusArv());
         }
         return tugevustList;
     }
 
-    public void maja(List<Kaart> viisKaarti){
-        List<Kaart> kolmik=tagastaKolmik(viisKaarti);
-        if(!kolmik.isEmpty()){
-            List<Kaart> koopia=new ArrayList<>(viisKaarti);
+    public void maja(List<Kaart> viisKaarti) {
+        List<Kaart> kolmik = tagastaKolmik(viisKaarti);
+        if (!kolmik.isEmpty()) {
+            List<Kaart> koopia = new ArrayList<>(viisKaarti);
             koopia.removeAll(kolmik);
-            if (koopia.get(0).getTugevusArv()==koopia.get(1).getTugevusArv() && kolmik.get(0).getTugevusArv()!=koopia.get(0).getTugevusArv()){
+            if (koopia.get(0).getTugevusArv() == koopia.get(1).getTugevusArv() && kolmik.get(0).getTugevusArv() != koopia.get(0).getTugevusArv()) {
                 seisud.get(2).add(viisKaarti);
 
             }
-            
-            
+
+
         }
     }
 
-    public static List<List<Kaart>> majaPaarJaKolmik(List<Kaart> viisKaarti){
-        List<List<Kaart>> kaardid=new ArrayList<>();
-        List<Kaart> kolmik=tagastaKolmik(viisKaarti);
+    public static List<List<Kaart>> majaPaarJaKolmik(List<Kaart> viisKaarti) {
+        List<List<Kaart>> kaardid = new ArrayList<>();
+        List<Kaart> kolmik = tagastaKolmik(viisKaarti);
         kaardid.add(kolmik);
         viisKaarti.removeAll(kolmik);
         kaardid.add(viisKaarti);
@@ -218,10 +217,10 @@ public class SeisuKontroll {
 
     public void rida(List<Kaart> viisKaarti) {
         int mituKorda = 0;
-        List<List<Kaart>> kaardid=Arrays.asList(viisKaarti);
+        List<List<Kaart>> kaardid = Arrays.asList(viisKaarti);
 
         for (int i = 0; i < viisKaarti.size() - 1; i++) {
-            if (viisKaarti.get(i).getTugevusArv() + 1 == viisKaarti.get(i+1).getTugevusArv())
+            if (viisKaarti.get(i).getTugevusArv() + 1 == viisKaarti.get(i + 1).getTugevusArv())
                 mituKorda++;
         }
         if (viisKaarti.get(viisKaarti.size() - 2).getTugevusArv() + 1 == viisKaarti.get(viisKaarti.size() - 1).getTugevusArv())
@@ -231,23 +230,22 @@ public class SeisuKontroll {
             seisud.get(4).add(viisKaarti);
     }
 
-    public void mast(List<Kaart> viisKaarti){
-        char mast=viisKaarti.get(0).getMast();
+    public void mast(List<Kaart> viisKaarti) {
+        char mast = viisKaarti.get(0).getMast();
         for (int i = 1; i < viisKaarti.size(); i++) {
-            if(viisKaarti.get(i).getMast()!=mast){
+            if (viisKaarti.get(i).getMast() != mast) {
                 return;
-            }
-            else if(i==4){
-            seisud.get(3).addAll(Arrays.asList(viisKaarti));
+            } else if (i == 4) {
+                seisud.get(3).addAll(Arrays.asList(viisKaarti));
             }
         }
 
     }
 
-    public boolean kasMast(List<Kaart> viisKaarti){
-        char mast=viisKaarti.get(0).getMast();
+    public boolean kasMast(List<Kaart> viisKaarti) {
+        char mast = viisKaarti.get(0).getMast();
         for (int i = 1; i < viisKaarti.size(); i++) {
-            if(viisKaarti.get(i).getMast()!=mast){
+            if (viisKaarti.get(i).getMast() != mast) {
                 return false;
             }
 
@@ -255,37 +253,39 @@ public class SeisuKontroll {
         return true;
 
     }
+
     public boolean kasRida(List<Kaart> viisKaarti) {
         int mituKorda = 0;
 
         for (int i = 0; i < viisKaarti.size() - 1; i++) {
-            if (viisKaarti.get(i).getTugevusArv() + 1 == viisKaarti.get(i+1).getTugevusArv())
+            if (viisKaarti.get(i).getTugevusArv() + 1 == viisKaarti.get(i + 1).getTugevusArv())
                 mituKorda++;
         }
         if (viisKaarti.get(viisKaarti.size() - 2).getTugevusArv() + 1 == viisKaarti.get(viisKaarti.size() - 1).getTugevusArv())
             mituKorda++;
 
-        if (mituKorda == 5){
-            return true;}
+        if (mituKorda == 5) {
+            return true;
+        }
         return false;
     }
 
 
-    public void mastiRida(List<Kaart> viisKaarti){
-        if(kasRida(viisKaarti) && kasMast(viisKaarti)){
+    public void mastiRida(List<Kaart> viisKaarti) {
+        if (kasRida(viisKaarti) && kasMast(viisKaarti)) {
             seisud.get(0).addAll(Arrays.asList(viisKaarti));
         }
     }
 
-    public void kõrge(){
-        seisud.get(8).add(käsi.subList(1,2));
+    public void kõrge() {
+        seisud.get(8).add(käsi.subList(1, 2));
     }
-
 
 
     public List<List<List<Kaart>>> getSeisud() {
         return seisud;
     }
+
     public List<Kaart> getKõikKaardid() {
         return kõikKaardid;
     }
@@ -306,7 +306,7 @@ public class SeisuKontroll {
             for (int j = 0; j < seisud.get(i).size(); j++) {
                 rida += "{";
                 for (int k = 0; k < seisud.get(i).get(j).size(); k++) {
-                    rida += seisud.get(i).get(j).get(k) ;
+                    rida += seisud.get(i).get(j).get(k);
                 }
                 rida += "} ";
             }
@@ -336,25 +336,25 @@ public class SeisuKontroll {
         return seisud.get(tugevaimSeis()).get(suurimIndeks);
     }
 
-    public static String indeksSeisuks(int i){
-        switch (i){
-            case(0):
+    public static String indeksSeisuks(int i) {
+        switch (i) {
+            case (0):
                 return "Mastirida";
-            case(1):
+            case (1):
                 return "Nelik";
-            case(2):
+            case (2):
                 return "Maja";
-            case(3):
+            case (3):
                 return "Mast";
-            case(4):
+            case (4):
                 return "Rida";
-            case(5):
+            case (5):
                 return "Kolmik";
-            case(6):
+            case (6):
                 return "Kaks paari";
-            case(7):
+            case (7):
                 return "Paar";
-            case(8):
+            case (8):
                 return "Kõrge";
             default:
                 return null;
