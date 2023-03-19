@@ -47,8 +47,12 @@ public class Mäng {
 
             } else if (seis == 3) {
                 if (vasakKõigeTugevam.get(vasakKõigeTugevam.size() - 1).getTugevusArv() > paremKõigeTugevam.get(paremKõigeTugevam.size() - 1).getTugevusArv()) {
-                    System.out.println("Vasakul tugevam mastirida");
-                } else System.out.println("Paremal tugevam mastirida");
+                    System.out.println("Vasakul tugevam mast");
+                } else if (vasakKõigeTugevam.get(vasakKõigeTugevam.size() - 1).getTugevusArv() < paremKõigeTugevam.get(paremKõigeTugevam.size() - 1).getTugevusArv()){
+                    System.out.println("Paremal tugevam mast");
+                }
+                else System.out.println("Viik");
+
             } else if (seis == 6) {
                 if (vasakKõigeTugevam.get(2).getTugevusArv() > paremKõigeTugevam.get(2).getTugevusArv()) {
                     System.out.println("Vasakul kõrgem paar tugevam");

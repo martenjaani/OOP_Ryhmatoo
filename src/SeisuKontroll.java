@@ -163,7 +163,7 @@ public class SeisuKontroll {
 
             }
             Collections.sort(kaardid);
-            seisud.get(6).add(kaardid.subList(0, 4));
+            seisud.get(6).add(kaardid.subList(kaardid.size()-4, kaardid.size()));
 
 
         }
