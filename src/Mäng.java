@@ -5,12 +5,11 @@ import java.util.Scanner;
 
 public class Mäng {
     public static void mäng() {
-        String sisend = "";
-        Pakk mängukaardid = new Pakk();
         int mängijaVõitudeArv = 0;
         int arvutiVõitudeArv = 0;
 
-        while (!sisend.equals("Välju")) {
+        while (true) {
+            Pakk mängukaardid = new Pakk();
             mängukaardid.sega();
 
             //Kaartide jagamine
