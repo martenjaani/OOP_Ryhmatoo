@@ -87,34 +87,45 @@ public class Mäng {
                     int paremaPaariTugevus = paremaMajaPaarJaKolmik.get(1).get(0).getTugevusArv();
                     if (vasakuKolmikuTugevus > paremaKolmikuTugevus) {
                         System.out.println("Võitja vasak!, tugevam maja");
+                        võitja = -1;
                     } else if (vasakuKolmikuTugevus < paremaKolmikuTugevus) {
                         System.out.println("Võitja parem!, tugevam maja");
+                        võitja = 1;
                     } else if (vasakuPaariTugevus > paremaPaariTugevus) {
                         System.out.println("Võitja vasak!, tugevam maja");
+                        võitja = -1;
                     } else if (vasakuPaariTugevus < paremaPaariTugevus) {
                         System.out.println("Võitja parem!, tugevam maja");
+                        võitja = 1;
                     } else System.out.println("Viik!");
                 } else if (seis == 3) {
                     if (vasakKõigeTugevam.get(vasakKõigeTugevam.size() - 1).getTugevusArv() > paremKõigeTugevam.get(paremKõigeTugevam.size() - 1).getTugevusArv()) {
                         System.out.println("Vasakul tugevam mast");
-                    } else if (vasakKõigeTugevam.get(vasakKõigeTugevam.size() - 1).getTugevusArv() < paremKõigeTugevam.get(paremKõigeTugevam.size() - 1).getTugevusArv()){
+                        võitja = -1;
+                    } else if (vasakKõigeTugevam.get(vasakKõigeTugevam.size() - 1).getTugevusArv() < paremKõigeTugevam.get(paremKõigeTugevam.size() - 1).getTugevusArv()) {
                         System.out.println("Paremal tugevam mast");
-                    }
-                    else System.out.println("Viik");
+                        võitja = 1;
+                    } else System.out.println("Viik");
                 } else if (seis == 6) {
                     if (vasakKõigeTugevam.get(2).getTugevusArv() > paremKõigeTugevam.get(2).getTugevusArv()) {
                         System.out.println("Vasakul kõrgem paar tugevam");
+                        võitja = -1;
                     } else if (vasakKõigeTugevam.get(2).getTugevusArv() < paremKõigeTugevam.get(2).getTugevusArv()) {
                         System.out.println("Paremal kõrgem paar tugevam");
+                        võitja = 1;
                     } else if (vasakKõigeTugevam.get(0).getTugevusArv() > paremKõigeTugevam.get(0).getTugevusArv()) {
                         System.out.println("Vasakul üks paaridest tugevam");
+                        võitja = -1;
                     } else if (vasakKõigeTugevam.get(0).getTugevusArv() < paremKõigeTugevam.get(0).getTugevusArv()) {
                         System.out.println("Paremal üks paaridest tugevam");
+                        võitja = 1;
                     } else {
                         if (vasak.getSeisud().get(8).get(0).get(0).getTugevusArv() > parem.getSeisud().get(8).get(0).get(0).getTugevusArv()) {
                             System.out.println("Vasak võidab kõrgema kaardiga");
+                            võitja = -1;
                         } else if (vasak.getSeisud().get(8).get(0).get(0).getTugevusArv() < parem.getSeisud().get(8).get(0).get(0).getTugevusArv()) {
                             System.out.println("Parem võidab kõrgema kaardiga");
+                            võitja = 1;
                         } else System.out.println("Viik!");
                     }
                 } else {
@@ -122,13 +133,28 @@ public class Mäng {
                     int paremSumma = SeisuKontroll.tugevusedListist(paremKõigeTugevam).stream().mapToInt(Integer::intValue).sum();
                     if (vasakSumma > paremSumma) {
                         System.out.println("Vasak võidab tänu kõrgematele kaartidele");
+                        võitja = -1;
                     } else if (vasakSumma < paremSumma) {
                         System.out.println("Parem võidab tänu kõrgematele kaartidele");
+                        võitja = 1;
+
+                    } else if (seis == 4) { System.out.println("Viik");
 
                     } else if (vasak.getSeisud().get(8).get(0).get(0).getTugevusArv() > parem.getSeisud().get(8).get(0).get(0).getTugevusArv()) {
                         System.out.println("Vasak võidab kõrgema kaardiga");
+                        võitja = -1;
                     } else if (vasak.getSeisud().get(8).get(0).get(0).getTugevusArv() < parem.getSeisud().get(8).get(0).get(0).getTugevusArv()) {
                         System.out.println("Parem võidav kõrgema kaardiga");
+                        võitja = 1;
+                    } else if (seis == 5 || seis == 7) {
+                        if (vasak.getKäsi().get(0).getTugevusArv() > parem.getKäsi().get(0).getTugevusArv()) {
+                            System.out.println("Vasak võidab kõrgema käega");
+                            võitja = -1;
+                        } else if (vasak.getKäsi().get(0).getTugevusArv() < parem.getKäsi().get(0).getTugevusArv()) {
+                            System.out.println("Parem võidab kõrgema käega");
+                            võitja = 1;
+                        } else System.out.println("Viik");
+
                     } else System.out.println("Viik");
                 }
             }
@@ -140,7 +166,6 @@ public class Mäng {
 
             System.out.println();
             System.out.println("Mängu seis: mängija " + mängijaVõitudeArv + " - " + arvutiVõitudeArv + " arvuti");
-
 
             System.out.println();
             Scanner scan2 = new Scanner(System.in);

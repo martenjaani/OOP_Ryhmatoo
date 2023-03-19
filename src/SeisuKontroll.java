@@ -362,4 +362,8 @@ public class SeisuKontroll {
 
         }
     }
+
+    public List<Kaart> getKäsi() {
+        return käsi;
+    }
 }
