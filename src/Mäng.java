@@ -81,6 +81,15 @@ public class Mäng {
                     System.out.println("Vasak võidab kõrgema kaardiga");
                 } else if (vasak.getSeisud().get(8).get(0).get(0).getTugevusArv() < parem.getSeisud().get(8).get(0).get(0).getTugevusArv()) {
                     System.out.println("Parem võidav kõrgema kaardiga");
+                } else if (seis==5 || seis==7) {
+                    if(vasak.getKäsi().get(0).getTugevusArv()>parem.getKäsi().get(0).getTugevusArv()){
+                        System.out.println("Vasak võidab kõrgema käega");
+                    }
+                    else if(vasak.getKäsi().get(0).getTugevusArv()<parem.getKäsi().get(0).getTugevusArv()){
+                        System.out.println("Parem võidab kõrgema käega");
+                    }
+                    else System.out.println("Viik");
+
                 } else System.out.println("Viik");
             }
 

@@ -154,6 +154,10 @@ public class SeisuKontroll {
 
     }
 
+    public List<Kaart> getKäsi() {
+        return käsi;
+    }
+
     public void kaksPaari() {
         List<List<Kaart>> paarid = seisud.get(7);
         List<Kaart> kaardid = new ArrayList<>();
