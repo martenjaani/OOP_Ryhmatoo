@@ -362,12 +362,6 @@ public class SeisuKontroll {
                 return "Kõrge";
             default:
                 return null;
-
-
         }
-    }
-
-    public List<Kaart> getKäsi() {
-        return käsi;
     }
 }
