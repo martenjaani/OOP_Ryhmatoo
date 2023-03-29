@@ -24,3 +24,22 @@ public class Test {
         }
     }
 }
+
+
+/*Kaart kaart1=new Kaart("7",'♥');
+        Kaart kaart2=new Kaart("8",'♣');
+        Kaart kaart3=new Kaart("8",'♠');
+        Kaart kaart4=new Kaart("10",'♥');
+        Kaart kaart5=new Kaart("J",'♥');
+        Kaart kaart6=new Kaart("7",'♦');
+        Kaart kaart7=new Kaart("7",'♣');
+        Kaart kaart8=new Kaart("8",'♥');
+        Kaart kaart9=new Kaart("7",'♠');
+        vasakKäsi.addAll(Arrays.asList(kaart2,kaart3));
+        ühiskaardid.addAll(Arrays.asList(kaart4,kaart5,kaart6,kaart7,kaart8));
+        paremKäsi.addAll(Arrays.asList(kaart1,kaart9));*/
+
+/* System.out.println();
+        System.out.println();
+        System.out.println(vasak.getSeisud());
+        System.out.println(parem.getSeisud());*/

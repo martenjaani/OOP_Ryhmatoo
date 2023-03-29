@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -6,6 +7,24 @@ public class Mäng {
     public static void mäng() {
         int mängijaVõitudeArv = 0;
         int arvutiVõitudeArv = 0;
+
+        System.out.println();
+        System.out.println("Mängu eesmärgiks on valida kahe juhusliku pokkerikäe vahel. Pärast valiiku tegemist väljastatakse 5 ühiskaarti ja öeldakse kumb kätest võitis.");
+        System.out.println("Mängija võidu korral suurendatakse mängija punkte ühe võrra. Vastasel juhul suurenevad arvuti punktid. Kui käed olid sama tugevad, siis punktid jäävad samaks.");
+        System.out.println("Kaartide tugevuste arvestamisel vaadatakse maksimaalselt 5 kaarti korraga.");
+        System.out.println();
+        System.out.println("Pokkerikäte tugevusjärjestus (alates tugevaimast):");
+        System.out.println("Mastirida - 5 järjestikust kaarti, mis on samast mastist");
+        System.out.println("Nelik - 4 sama tugevusega kaarti");
+        System.out.println("Maja - kolmik ja paar");
+        System.out.println("Mast - 5 kaarti samast mastist");
+        System.out.println("Rida - 5 järjestikust kaarti");
+        System.out.println("Kolmik - 3 sama tugevusega kaarti");
+        System.out.println("Kaks paari");
+        System.out.println("Üks paar");
+        System.out.println("Kõrge kaart - Kõrgeim käesolev kaart.");
+        System.out.println();
+        System.out.println();
 
         while (true) {
             Pakk mängukaardid = new Pakk();
@@ -198,20 +217,3 @@ public class Mäng {
     }
 }
 
-/*Kaart kaart1=new Kaart("7",'♥');
-        Kaart kaart2=new Kaart("8",'♣');
-        Kaart kaart3=new Kaart("8",'♠');
-        Kaart kaart4=new Kaart("10",'♥');
-        Kaart kaart5=new Kaart("J",'♥');
-        Kaart kaart6=new Kaart("7",'♦');
-        Kaart kaart7=new Kaart("7",'♣');
-        Kaart kaart8=new Kaart("8",'♥');
-        Kaart kaart9=new Kaart("7",'♠');
-        vasakKäsi.addAll(Arrays.asList(kaart2,kaart3));
-        ühiskaardid.addAll(Arrays.asList(kaart4,kaart5,kaart6,kaart7,kaart8));
-        paremKäsi.addAll(Arrays.asList(kaart1,kaart9));*/
-
-/* System.out.println();
-        System.out.println();
-        System.out.println(vasak.getSeisud());
-        System.out.println(parem.getSeisud());*/
