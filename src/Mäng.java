@@ -74,11 +74,11 @@ public class Mäng {
                     System.out.print(kaart1 + " ");
                 }
                 võitja = -1;
-            } else if (vasak.tugevaimSeis() == parem.tugevaimSeis()) {
+            } else if (vasak.tugevaimSeis() == parem.tugevaimSeis()) { // kui on samad seisud, siis kontrollin kummal tugevam
                 int seis = vasak.tugevaimSeis();
                 List<Kaart> vasakKõigeTugevam = vasak.getSeisud().get(seis).get(vasak.getSeisud().get(seis).size() - 1);
                 List<Kaart> paremKõigeTugevam = parem.getSeisud().get(seis).get(parem.getSeisud().get(seis).size() - 1);
-                if (seis == 2) {
+                if (seis == 2) {//võrdlen kahte maja, kumb tugevam
                     List<List<Kaart>> vasakuMajaPaarJaKolmik = SeisuKontroll.majaPaarJaKolmik(vasakKõigeTugevam);
                     List<List<Kaart>> paremaMajaPaarJaKolmik = SeisuKontroll.majaPaarJaKolmik(paremKõigeTugevam);
                     int vasakuKolmikuTugevus = vasakuMajaPaarJaKolmik.get(0).get(0).getTugevusArv();
@@ -98,7 +98,7 @@ public class Mäng {
                         System.out.println("Võitja parem!, tugevam maja");
                         võitja = 1;
                     } else System.out.println("Viik!");
-                } else if (seis == 3) {
+                } else if (seis == 3) {//võrdlen kahte masti, kummal tugevam
                     if (vasakKõigeTugevam.get(vasakKõigeTugevam.size() - 1).getTugevusArv() > paremKõigeTugevam.get(paremKõigeTugevam.size() - 1).getTugevusArv()) {
                         System.out.println("Vasakul tugevam mast");
                         võitja = -1;
@@ -106,7 +106,7 @@ public class Mäng {
                         System.out.println("Paremal tugevam mast");
                         võitja = 1;
                     } else System.out.println("Viik");
-                } else if (seis == 6) {
+                } else if (seis == 6) {// võrdlen kahte 2paari, kummal tugeval
                     if (vasakKõigeTugevam.get(2).getTugevusArv() > paremKõigeTugevam.get(2).getTugevusArv()) {
                         System.out.println("Vasakul kõrgem paar tugevam");
                         võitja = -1;
@@ -128,7 +128,7 @@ public class Mäng {
                             võitja = 1;
                         } else System.out.println("Viik!");
                     }
-                } else {
+                } else {// ülejäänud seisude tugevust saab võrrelda kaartide tugevuste summana
                     int vasakSumma = SeisuKontroll.tugevusedListist(vasakKõigeTugevam).stream().mapToInt(Integer::intValue).sum();
                     int paremSumma = SeisuKontroll.tugevusedListist(paremKõigeTugevam).stream().mapToInt(Integer::intValue).sum();
                     if (vasakSumma > paremSumma) {

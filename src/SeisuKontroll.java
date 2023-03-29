@@ -15,7 +15,7 @@ public class SeisuKontroll {
     private List<Kaart> käsi;
     private List<Kaart> ühiskaardid;
     private List<Kaart> kõikKaardid = new ArrayList<>();
-    private List<List<List<Kaart>>> seisud;
+    private List<List<List<Kaart>>> seisud; //kõikvõimalikud seisud salvestame siia mitmemõõtmelisse list, mille igale indeksile (vt kõige ülemine comment) vastab sellele seisule vastavad kaardikombinatisoonid
 
     public SeisuKontroll(List<Kaart> käsi, List<Kaart> ühiskaardid) {
         this.käsi = käsi;
@@ -32,7 +32,7 @@ public class SeisuKontroll {
     }
 
     public void kõikVõimalused() {
-        int[][] võimalused = {
+        int[][] võimalused = { //kõik kombinatsioonid 7st 5 kaupa (seisu muudustab 7st kaardist (ühiskaardid ja käsi) maksimaalselt viis)
                 {0, 1, 2, 3, 4},
                 {0, 1, 2, 3, 5},
                 {0, 1, 2, 3, 6},
@@ -64,16 +64,16 @@ public class SeisuKontroll {
             kontrollitavadKaardid.add(kõikKaardid.get(ints[3]));
             kontrollitavadKaardid.add(kõikKaardid.get(ints[4]));
 
-            paar(kontrollitavadKaardid);
-            kolmik(kontrollitavadKaardid);
+            paar(kontrollitavadKaardid); //kontrollin, kas antud viie kaardi kombinatsioonis leidub paare, meetod salvestab paarid listi 'seisus'
+            kolmik(kontrollitavadKaardid);// sama
             rida(kontrollitavadKaardid);
             mast(kontrollitavadKaardid);
             maja(kontrollitavadKaardid);
             nelik(kontrollitavadKaardid);
             mastiRida(kontrollitavadKaardid);
         }
-        kõrge();
-        kaksPaari();
+        kõrge(); // lihtsalt suurim kaart listis 'käsi'
+        kaksPaari(); // 2 suurimat leitud paari
     }
 
 
