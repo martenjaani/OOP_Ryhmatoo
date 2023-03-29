@@ -52,7 +52,7 @@ public class Mäng {
 
             System.out.println(väljastaKaardid(vasakKäsi) + " ja " + väljastaKaardid(paremKäsi));
 
-            SeisuKontroll vasak = new SeisuKontroll(vasakKäsi, ühiskaardid);
+            SeisuKontroll vasak = new SeisuKontroll(vasakKäsi, ühiskaardid); //loodud isendil on väga palju kasulikke meetodeid, mida hakkame kasutama seisude võrdlemiseks
             SeisuKontroll parem = new SeisuKontroll(paremKäsi, ühiskaardid);
 
             Scanner scan = new Scanner(System.in);
@@ -80,7 +80,7 @@ public class Mäng {
 
             int võitja = 0; //Kui vasak võidab, siis -1, viik 0, parem võidab 1.
 
-            if (parem.tugevaimSeis() < vasak.tugevaimSeis() && parem.tugevaimSeis() != -1) {
+            if (parem.tugevaimSeis() < vasak.tugevaimSeis() && parem.tugevaimSeis() != -1) { // tugevama seisuga mängija võidab
                 System.out.println("Võidab parem, kellel on " + SeisuKontroll.indeksSeisuks(parem.tugevaimSeis()));
                 for (Kaart kaart : parem.tugevaimadViis()) {
                     System.out.print(kaart + " ");
@@ -92,9 +92,9 @@ public class Mäng {
                     System.out.print(kaart1 + " ");
                 }
                 võitja = -1;
-            } else if (vasak.tugevaimSeis() == parem.tugevaimSeis()) { // kui on samad seisud, siis kontrollin kummal tugevam
+            } else if (vasak.tugevaimSeis() == parem.tugevaimSeis()) { // kui on samad seisud, siis kontrollin kummal tugevam sama seis
                 int seis = vasak.tugevaimSeis();
-                List<Kaart> vasakKõigeTugevam = vasak.getSeisud().get(seis).get(vasak.getSeisud().get(seis).size() - 1);
+                List<Kaart> vasakKõigeTugevam = vasak.getSeisud().get(seis).get(vasak.getSeisud().get(seis).size() - 1); //kaartide list, mis moodustav kõige tugevama antud seisu
                 List<Kaart> paremKõigeTugevam = parem.getSeisud().get(seis).get(parem.getSeisud().get(seis).size() - 1);
                 if (seis == 2) {//võrdlen kahte maja, kumb tugevam
                     List<List<Kaart>> vasakuMajaPaarJaKolmik = SeisuKontroll.majaPaarJaKolmik(vasakKõigeTugevam);
